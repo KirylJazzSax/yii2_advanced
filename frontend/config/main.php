@@ -36,14 +36,25 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
+
+                'users/<user_id:\d+>/posts' => 'user-posts/index',
+                'users/<user_id:\d+>/posts/<id:\d+>' => 'user-posts/view',
+                'users/<user_id:\d+>/posts/<id:\d+>/<_a:[\w-]+>' => 'user-posts/<_a>',
+                'users/<user_id:\d+>/posts/<_a:[\w-]+>' => 'user-posts/<_a>',
+
+                '<_c:[\w-]+>' => '<_c>/index',
+                '<_c:[\w-]+>/<id:\d+>' => '<_c>/view',
+                '<_c:[\w-]+>/<id:\d+>/<_a:[\w-]+>' => '<_c>/<_a>',
+
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

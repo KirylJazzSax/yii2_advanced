@@ -1,0 +1,39 @@
+<?php
+
+namespace frontend\models\query;
+
+/**
+ * This is the ActiveQuery class for [[\frontend\models\Post]].
+ *
+ * @see \frontend\models\Post
+ */
+class PostQuery extends \yii\db\ActiveQuery
+{
+    public function forUser($userId)
+    {
+        return $this->andWhere(['user_id' => $userId]);
+    }
+
+    public function latest($limit)
+    {
+        return $this->limit($limit)->orderBy(['id' => SORT_DESC]);
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return \frontend\models\Post[]|array
+     */
+    public function all($db = null)
+    {
+        return parent::all($db);
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return \frontend\models\Post|array|null
+     */
+    public function one($db = null)
+    {
+        return parent::one($db);
+    }
+}
